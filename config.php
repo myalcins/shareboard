@@ -7,5 +7,5 @@ define('DB_PASSWORD', "ymehmet");
 define('DB_NAME', "shareboard");
 
 // Define URL
-define("ROOT_PATH", "/localhost:8000/");
+define("ROOT_PATH", "/");
 define("ROOT_URL", "http://localhost:8000/");

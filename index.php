@@ -16,9 +16,7 @@ require_once 'controllers/shares.php';
 if(isset($_SERVER['REQUEST_URI'])):
     $uri = explode("/", $_SERVER['REQUEST_URI']);
     $_GET['controller'] = $uri[1];
-    if(isset($uri[2])):
-        $_GET['action'] = $uri[2];
-    endif;
+    $_GET['action'] = $uri[2] ?? "";
 else:
         $_GET['controller'] = "";
         $_GET['action'] = "";
