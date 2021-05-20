@@ -7,7 +7,11 @@ class Shares extends Controller{
     }
 
     protected function add(){
-        $viewModel = new ShareModel();
-        $this->returnView($viewModel->add(), true);
+        if(isset($_SESSION['is_logged_in'])):
+            $viewModel = new ShareModel();
+            $this->returnView($viewModel->add(), true);
+        else:
+            header("Location: ". ROOT_URL."users/login");
+        endif;
     }
 }

@@ -8,6 +8,10 @@ class UserModel extends Model
         $password = md5($post['password']);
 
         if($post['submit']):
+            if($post['username'] == "" or $post['email'] == "" or $post['password'] == ""):
+                Messages::setMsg("Please fill in all fields", "error");
+                return;
+            endif;
             $this->query('INSERT INTO users(username, email, password) VALUES(:username, :email, :password);');
             $this->bind(':username', htmlspecialchars($post['username']));
             $this->bind(':email', htmlspecialchars($post['email']));
@@ -40,7 +44,7 @@ class UserModel extends Model
                 );
                 header('Location: ' . ROOT_URL . 'shares');
             } else {
-                echo "TRY AGAIN";
+                Messages::setMsg('Incorrect Login', 'error');
             }
 
         endif;
