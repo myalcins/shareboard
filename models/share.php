@@ -16,7 +16,7 @@ class ShareModel extends Model
             $this->bind(':title', htmlspecialchars($post['title']));
             $this->bind(':body', htmlspecialchars($post['body']));
             $this->bind(':link', htmlspecialchars($post['link']));
-            $this->bind(':user_id', 1);
+            $this->bind(':user_id', $_SESSION['user_data']['user_id']);
             $this->execute();
 
             if($this->lastInsertId()):

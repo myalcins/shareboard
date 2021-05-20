@@ -14,12 +14,21 @@
                 </li>
             </ul>
             <ul class="navbar-nav navbar-right mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="<?php echo ROOT_URL; ?>users/login">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="<?php echo ROOT_URL; ?>users/register">Register</a>
-                </li>
+                <?php if(isset($_SESSION['is_logged_in'])): ?>
+                    <li class="nav-item">
+                        <a class="nav-link disable" aria-current="page"><?php echo "Welcome " . $_SESSION['user_data']['username']; ?></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="<?php echo ROOT_URL; ?>users/logout">Logout</a>
+                    </li>
+                <?php else: ?>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="<?php echo ROOT_URL; ?>users/login">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="<?php echo ROOT_URL; ?>users/register">Register</a>
+                    </li>
+                <?php endif; ?>
             </ul>
             <form class="d-flex">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
